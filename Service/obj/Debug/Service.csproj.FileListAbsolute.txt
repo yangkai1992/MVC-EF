@@ -1,0 +1,13 @@
+D:\MyProject\MVC-EF\Service\bin\Debug\Service.dll
+D:\MyProject\MVC-EF\Service\bin\Debug\Service.pdb
+D:\MyProject\MVC-EF\Service\bin\Debug\Model.dll
+D:\MyProject\MVC-EF\Service\bin\Debug\Repository.dll
+D:\MyProject\MVC-EF\Service\bin\Debug\EntityFramework.dll
+D:\MyProject\MVC-EF\Service\bin\Debug\Model.pdb
+D:\MyProject\MVC-EF\Service\bin\Debug\Repository.pdb
+D:\MyProject\MVC-EF\Service\bin\Debug\EntityFramework.xml
+D:\MyProject\MVC-EF\Service\obj\Debug\Service.csprojResolveAssemblyReference.cache
+D:\MyProject\MVC-EF\Service\obj\Debug\Service.dll
+D:\MyProject\MVC-EF\Service\obj\Debug\Service.pdb
+D:\MyProject\MVC-EF\Service\bin\Debug\Autofac.dll
+D:\MyProject\MVC-EF\Service\bin\Debug\Autofac.xml

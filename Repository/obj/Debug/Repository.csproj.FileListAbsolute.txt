@@ -5,3 +5,12 @@ D:\MyProject\MVC+EF\Repository\bin\Debug\EntityFramework.xml
 D:\MyProject\MVC+EF\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
 D:\MyProject\MVC+EF\Repository\obj\Debug\Repository.dll
 D:\MyProject\MVC+EF\Repository\obj\Debug\Repository.pdb
+D:\MyProject\MVC-EF\Repository\bin\Debug\Repository.dll
+D:\MyProject\MVC-EF\Repository\bin\Debug\Repository.pdb
+D:\MyProject\MVC-EF\Repository\bin\Debug\EntityFramework.dll
+D:\MyProject\MVC-EF\Repository\bin\Debug\Model.dll
+D:\MyProject\MVC-EF\Repository\bin\Debug\Model.pdb
+D:\MyProject\MVC-EF\Repository\bin\Debug\EntityFramework.xml
+D:\MyProject\MVC-EF\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
+D:\MyProject\MVC-EF\Repository\obj\Debug\Repository.dll
+D:\MyProject\MVC-EF\Repository\obj\Debug\Repository.pdb

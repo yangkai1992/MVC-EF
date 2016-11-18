@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    public interface IRepository
+    public interface IRepository<T>
     {
+        T GetById(Guid id);
 
+        void Insert(T entity);
+
+        void Update(T entity);
+
+        void Delete(T entity);
     }
 }
