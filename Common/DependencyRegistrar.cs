@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Autofac.Integration.Mvc;
+using Repository;
 
 namespace Common
 {
@@ -20,7 +22,16 @@ namespace Common
 
         public void Register(ContainerBuilder builder, ITypeFinder typeFinder, CustomerConfig config)
         {
-            throw new NotImplementedException();
+            //控制器注入
+            builder.RegisterControllers(typeFinder.GetAssemblies().ToArray());
+
+            //注册服务
+            builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
+
+            builder.Register<IDbContext>(c => new DataContext("127.0.0.1")).InstancePerLifetimeScope();
+
+            builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
+
         }
     }
 }

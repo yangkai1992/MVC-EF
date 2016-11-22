@@ -7,3 +7,8 @@ D:\MyProject\MVC-EF\Model\bin\Debug\Model.pdb
 D:\MyProject\MVC-EF\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 D:\MyProject\MVC-EF\Model\obj\Debug\Model.dll
 D:\MyProject\MVC-EF\Model\obj\Debug\Model.pdb
+D:\MVC\MVC-EF\Model\bin\Debug\Model.dll
+D:\MVC\MVC-EF\Model\bin\Debug\Model.pdb
+D:\MVC\MVC-EF\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\MVC\MVC-EF\Model\obj\Debug\Model.dll
+D:\MVC\MVC-EF\Model\obj\Debug\Model.pdb
