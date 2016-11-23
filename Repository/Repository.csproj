@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
-      <HintPath>..\..\..\ecgo-projects\1QQT_ERP\trunk\DLL\EntityFramework.dll</HintPath>
+      <HintPath>..\DLL\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
