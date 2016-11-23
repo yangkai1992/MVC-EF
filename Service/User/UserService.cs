@@ -46,5 +46,11 @@ namespace Service
 
             _userRepository.Update(user);
         }
+
+
+        public User Find(Guid id)
+        {
+            return _userRepository.GetById(id);
+        }
     }
 }

@@ -9,8 +9,6 @@ D:\MyProject\MVC-EF\Service\bin\Debug\EntityFramework.xml
 D:\MyProject\MVC-EF\Service\obj\Debug\Service.csprojResolveAssemblyReference.cache
 D:\MyProject\MVC-EF\Service\obj\Debug\Service.dll
 D:\MyProject\MVC-EF\Service\obj\Debug\Service.pdb
-D:\MyProject\MVC-EF\Service\bin\Debug\Autofac.dll
-D:\MyProject\MVC-EF\Service\bin\Debug\Autofac.xml
 D:\MVC\MVC-EF\Service\bin\Debug\Service.dll
 D:\MVC\MVC-EF\Service\bin\Debug\Service.pdb
 D:\MVC\MVC-EF\Service\bin\Debug\Model.dll

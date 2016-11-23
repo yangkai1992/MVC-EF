@@ -26,5 +26,7 @@ namespace Service
         /// </summary>
         /// <param name="user"></param>
         void UpdateUser(User user);
+
+        User Find(Guid id);
     }
 }

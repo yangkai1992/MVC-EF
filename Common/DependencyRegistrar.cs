@@ -15,11 +15,6 @@ namespace Common
     /// </summary>
     public class DependencyRegistrar : IDependencyRegistrar
     {
-        public void Register(ContainerBuilder builder)
-        {
-            builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
-        }
-
         public void Register(ContainerBuilder builder, ITypeFinder typeFinder, CustomerConfig config)
         {
             //控制器注入
@@ -28,7 +23,7 @@ namespace Common
             //注册服务
             builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
 
-            builder.Register<IDbContext>(c => new DataContext("127.0.0.1")).InstancePerLifetimeScope();
+            builder.Register<IDbContext>(c => new DataContext("Password=123456;Persist Security Info=True;User ID=sa;Initial Catalog=Test;Data Source=127.0.0.1")).InstancePerLifetimeScope();
 
             builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
 

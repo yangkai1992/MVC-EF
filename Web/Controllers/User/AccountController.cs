@@ -23,10 +23,16 @@ namespace Web.Controllers
             {
                 return View("../Home/Index", user);
             }
-
+            user.CreateTime = DateTime.Now;
             _userService.CreateUser(user);
 
             return View();
+        }
+
+        public string Find()
+        {
+            Model.User us = _userService.Find(new Guid("7DD9EF20-EE4B-448A-9221-B800250A3DBB"));
+            return us.UserName;
         }
     }
 }

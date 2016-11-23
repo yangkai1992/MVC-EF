@@ -10,7 +10,6 @@ D:\MyProject\MVC-EF\Common\bin\Debug\Repository.dll
 D:\MyProject\MVC-EF\Common\bin\Debug\System.Web.Razor.dll
 D:\MyProject\MVC-EF\Common\bin\Debug\System.Web.WebPages.Razor.dll
 D:\MyProject\MVC-EF\Common\bin\Debug\System.Web.WebPages.dll
-D:\MyProject\MVC-EF\Common\bin\Debug\EntityFramework.dll
 D:\MyProject\MVC-EF\Common\bin\Debug\System.Web.WebPages.Deployment.dll
 D:\MyProject\MVC-EF\Common\bin\Debug\Service.pdb
 D:\MyProject\MVC-EF\Common\bin\Debug\Autofac.xml
@@ -50,3 +49,4 @@ D:\MVC\MVC-EF\Common\bin\Debug\System.Web.WebPages.xml
 D:\MVC\MVC-EF\Common\bin\Debug\EntityFramework.xml
 D:\MVC\MVC-EF\Common\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\MVC\MVC-EF\Common\obj\Debug\Common.pdb
+D:\MyProject\MVC-EF\Common\bin\Debug\EntityFramework.dll

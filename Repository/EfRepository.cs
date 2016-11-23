@@ -13,6 +13,16 @@ namespace Repository
         private readonly IDbContext _context;
         private IDbSet<T> _dbSet;
 
+        protected virtual IDbSet<T> DbSet
+        {
+            get
+            {
+                if (_dbSet == null)
+                    _dbSet = _context.Set<T>();
+                return _dbSet;
+            }
+        }
+
         public EfRepository(IDbContext context)
         {
             this._context = context;
@@ -20,7 +30,7 @@ namespace Repository
 
         public T GetById(Guid id)
         {
-            return this._dbSet.Find(id);
+            return this.DbSet.Find(id);
         }
 
         public void Insert(T entity)
@@ -30,7 +40,7 @@ namespace Repository
                 if (entity == null)
                     throw new ArgumentNullException("entity");
 
-                this._dbSet.Add(entity);
+                this.DbSet.Add(entity);
                 this._context.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
@@ -61,7 +71,7 @@ namespace Repository
                 if (entity == null)
                     throw new ArgumentNullException("entity");
 
-                this._dbSet.Remove(entity);
+                this.DbSet.Remove(entity);
                 this._context.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
