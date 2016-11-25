@@ -17,7 +17,6 @@ namespace Common
         /// </summary>
         /// <param name="builder">容器</param>
         /// <param name="typeFinder">类型查找器</param>
-        /// <param name="config">配置文件</param>
-        void Register(ContainerBuilder builder, ITypeFinder typeFinder, CustomerConfig config);
+        void Register(ContainerBuilder builder, ITypeFinder typeFinder);
     }
 }

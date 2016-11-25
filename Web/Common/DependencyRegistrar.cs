@@ -15,7 +15,7 @@ namespace Common
     /// </summary>
     public class DependencyRegistrar : IDependencyRegistrar
     {
-        public void Register(ContainerBuilder builder, ITypeFinder typeFinder, CustomerConfig config)
+        public void Register(ContainerBuilder builder, ITypeFinder typeFinder)
         {
             //控制器注入
             builder.RegisterControllers(typeFinder.GetAssemblies().ToArray());

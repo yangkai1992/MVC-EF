@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\DependencyRegistrar.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\User\AccountController.cs" />
     <Compile Include="Global.asax.cs">
@@ -125,7 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Common\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +136,10 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{9e15916a-44d1-48fe-a1c7-e9c8302da01d}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{404bbbb2-404e-4239-917c-7a28cd5e89aa}</Project>
+      <Name>Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\Service\Service.csproj">
       <Project>{7d2b9413-a0c3-448d-8642-e82e9c16526e}</Project>

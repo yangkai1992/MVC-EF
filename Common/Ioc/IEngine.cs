@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class WebAppTypeFinder:AppDomainTypeFinder
+    public interface IEngine
     {
+        ContainerManager ContainerManager { get; }
+
+        void Initialize();
     }
 }

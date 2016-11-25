@@ -21,9 +21,7 @@ namespace Common
             if (Singleton<IEngine>.Instance == null || forceRecreate)
             {
                 Singleton<IEngine>.Instance = new Engine();
-
-                var config = ConfigurationManager.GetSection("CustomerConfig") as CustomerConfig;
-                Singleton<IEngine>.Instance.Initialize(config);
+                Singleton<IEngine>.Instance.Initialize();
             }
 
             return Singleton<IEngine>.Instance;
