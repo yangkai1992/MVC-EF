@@ -17,6 +17,7 @@
             @Html.HiddenFor(m => m.Id);
             @Html.LabelFor(m=>m.UserName)
             @Html.TextBoxFor(m=>m.UserName)
+            @Html.ValidationMessageFor(m => m.UserName)
             @Html.LabelFor(m => m.Account)
             @Html.TextBoxFor(m => m.Account)
             @Html.LabelFor(m => m.Password)

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.Data.Entity.ModelConfiguration;
+using Model;
 
 namespace Repository
 {
@@ -45,5 +46,7 @@ namespace Repository
         {
             return base.Set<TEntity>();
         }
+
+        public IDbSet<User> UserList { get; set; }
     }
 }

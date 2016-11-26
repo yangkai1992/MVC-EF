@@ -13,7 +13,7 @@ namespace Repository.Mapping
         public UserMap()
         {
             this.ToTable("User");
-            //this.HasKey(m => m.Id);
+            this.HasKey(m => m.Id);
             this.Property(m => m.UserName).IsRequired().HasMaxLength(10);
             this.Property(m => m.Account).IsRequired().HasMaxLength(10);
             this.Property(m => m.Password).HasMaxLength(16);
