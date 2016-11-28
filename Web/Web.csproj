@@ -64,6 +64,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\DLL\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -71,7 +74,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="WebGrease">
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DLL\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -102,16 +106,17 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Global.asax" />
-    <Content Include="Script\Plugin\angular.min.js" />
-    <Content Include="Script\Plugin\bootstrap.js" />
-    <Content Include="Script\Plugin\bootstrap.min.js" />
-    <Content Include="Script\Plugin\jquery.tmpl.min.js" />
-    <Content Include="Script\Plugin\jQuery\jquery-2.1.4.js" />
-    <Content Include="Script\Plugin\jQuery\jQuery-min.js" />
-    <Content Include="Script\Plugin\vue.min.js" />
+    <Content Include="Scripts\Plugin\angular.min.js" />
+    <Content Include="Scripts\Plugin\bootstrap.js" />
+    <Content Include="Scripts\Plugin\bootstrap.min.js" />
+    <Content Include="Scripts\Plugin\jquery.tmpl.min.js" />
+    <Content Include="Scripts\Plugin\jQuery\jquery-2.1.4.js" />
+    <Content Include="Scripts\Plugin\jQuery\jQuery-min.js" />
+    <Content Include="Scripts\Plugin\vue.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\DependencyRegistrar.cs" />
     <Compile Include="Controllers\HomeController.cs" />
