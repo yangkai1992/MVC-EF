@@ -18,15 +18,15 @@ namespace Model
 
         public Guid Id { get; set; }
 
-        //[Required(ErrorMessage="请输入账号")]
+        [Required(ErrorMessage="请输入账号")]
         [DisplayName("账号")]
         public string Account { get; set; }
 
-        //[Required(ErrorMessage="请输入密码")]
+        [Required(ErrorMessage="请输入密码")]
         [DisplayName("密码")]
         public string Password { get; set; }
 
-        //[Required(ErrorMessage="请输入昵称")]
+        [Required(ErrorMessage="请输入昵称")]
         [DisplayName("昵称")]
         public string UserName { get; set; }
 

@@ -20,7 +20,6 @@ namespace Common
         /// <summary>
         /// 注册组件和插件
         /// </summary>
-        /// <param name="config">配置</param>
         public void Initialize()
         {
             //注册依赖

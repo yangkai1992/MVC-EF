@@ -21,10 +21,7 @@ namespace Repository
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //dynamically load all configuration
-            //System.Type configType = typeof(LanguageMap);   //any of your configuration classes here
-            //var typesToRegister = Assembly.GetAssembly(configType).GetTypes()
-
+            //注入模型
             var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
             .Where(type => !String.IsNullOrEmpty(type.Namespace))
             .Where(type => type.BaseType != null && type.BaseType.IsGenericType &&
@@ -34,10 +31,6 @@ namespace Repository
                 dynamic configurationInstance = Activator.CreateInstance(type);
                 modelBuilder.Configurations.Add(configurationInstance);
             }
-            //...or do it manually below. For example,
-            //modelBuilder.Configurations.Add(new LanguageMap());
-
-
 
             base.OnModelCreating(modelBuilder);
         }
