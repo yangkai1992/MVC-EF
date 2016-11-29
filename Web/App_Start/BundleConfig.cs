@@ -21,7 +21,8 @@ namespace Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/all-skins.1.0.0.css"));
         }
     }
 }
