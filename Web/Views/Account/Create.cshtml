@@ -1,22 +1,21 @@
-﻿@model Model.User
-<section ng-app="registrar" style="padding-top:180px">
+﻿<section ng-app="registrar" style="padding-top:80px">
     <form class="form-horizontal" role="form" ng-controller="registrarController">
         <div class="form-group">
             <label for="account" class="col-sm-offset-4 col-sm-1 control-label" style="padding-right:0px">账号：</label>
             <div class="col-sm-2" style="padding-left:0px">
-                <input type="text" class="form-control" id="account" ng-model="account" placeholder="请输入账号" />
+                <input type="text" class="form-control" id="account" ng-model="user.Account" placeholder="请输入账号" />
             </div>
         </div>
         <div class="form-group">
             <label for="passWord" class="col-sm-offset-4 col-sm-1 control-label" style="padding-right:0px">密码：</label>
             <div class="col-sm-2" style="padding-left:0px">
-                <input type="text" class="form-control" id="passWord" ng-model="passWord" placeholder="请输入密码" />
+                <input type="text" class="form-control" id="passWord" ng-model="user.Password" placeholder="请输入密码" />
             </div>
         </div>
         <div class="form-group">
-            <label for="nickName" class="col-sm-offset-4 col-sm-1 control-label" ng-model="nickName" style="padding-right:0px">昵称：</label>
+            <label for="nickName" class="col-sm-offset-4 col-sm-1 control-label" style="padding-right:0px">昵称：</label>
             <div class="col-sm-2" style="padding-left:0px">
-                <input type="text" class="form-control" id="nickName" placeholder="请输入昵称" />
+                <input type="text" class="form-control" id="nickName" ng-model="user.UserName" placeholder="请输入昵称" />
             </div>
         </div>
         <div class="form-group">
@@ -28,18 +27,24 @@
 </section>
 <script>
     var registrarModule = angular.module("registrar", []);
-    registrarModule.controller("registrarController", function ($scope) {
-
-        $scope.account = "";
-        $scope.passWord = "";
-        $scope.nickName = "";
+    registrarModule.controller("registrarController", function ($scope,$http) {
+        $scope.user = @Html.Raw(ViewBag.Model)
+        //$scope.account = "";
+        //$scope.passWord = "";
+        //$scope.nickName = "";
 
 
 
         $scope.submit = function () {
             //表单验证
 
-            alert("sfsdf");
+            $http({
+                method: "POST",
+                url: '@Url.Content("~/Account/Create")',
+                data:$scope.user
+            }).success(function(data){
+                alert(data.State);
+            })    
         }
     })
 </script>

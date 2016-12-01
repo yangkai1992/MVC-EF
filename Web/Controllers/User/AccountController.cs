@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Common;
 
 namespace Web.Controllers
 {
@@ -19,21 +20,26 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            Model.User user = new Model.User();
+            ViewBag.Model = JsonUtls.ToJson(user);
             return View();
         }
 
         // GET: Account
         [HttpPost]
-        public ActionResult Create(Model.User user)
+        public JsonResult Create(Model.User user)
         {
+            user.CreateTime = DateTime.Now;
             if(!ModelState.IsValid)
             {
-                return View("../Home/Index", user);
+                return Json(user);
             }
             user.CreateTime = DateTime.Now;
-            _userService.CreateUser(user);
+            //_userService.CreateUser(user);
 
-            return View();
+            var ResultJson = new { State = 1 };
+
+            return Json(ResultJson);
         }
 
         public string Find()
