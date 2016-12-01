@@ -16,7 +16,14 @@ namespace Web.Controllers
             this._userService = userService;
         }
 
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
         // GET: Account
+        [HttpPost]
         public ActionResult Create(Model.User user)
         {
             if(!ModelState.IsValid)
