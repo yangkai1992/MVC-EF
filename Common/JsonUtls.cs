@@ -15,11 +15,10 @@ namespace Common
     public static class JsonUtls
     {
         /// <summary>
-        /// Json序列化
+        /// 对象转为json
         /// </summary>
-        /// <typeparam name="T">待序列化的类型</typeparam>
-        /// <param name="obj">待序列化的对象</param>
-        /// <returns>Json字符串</returns>
+        /// <param name="o">要转换的对象</param>
+        /// <returns>json字符串</returns>
         public static string ToJson(object o) 
         {
             var convert = new IsoDateTimeConverter();

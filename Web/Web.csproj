@@ -54,6 +54,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\DLL\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\DLL\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -111,6 +114,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\all-skins.1.0.0.css" />
     <Content Include="Content\all-skins.min.css" />
+    <Content Include="Content\Icon\lc-icons.png" />
+    <Content Include="Content\common.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Plugin\angular.min.js" />
@@ -120,29 +125,36 @@
     <Content Include="Scripts\Plugin\jQuery\jquery-2.1.4.js" />
     <Content Include="Scripts\Plugin\jQuery\jQuery-min.js" />
     <Content Include="Scripts\Plugin\vue.min.js" />
+    <Content Include="Scripts\Common.js" />
+    <Content Include="Scripts\UIHelp.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\Common.cs" />
     <Compile Include="Common\DependencyRegistrar.cs" />
+    <Compile Include="Controllers\BaseController\AuthorizationController.cs" />
+    <Compile Include="Controllers\BaseController\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\User\AccountController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\JsonResultModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\Create.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Log4Net.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -152,7 +164,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

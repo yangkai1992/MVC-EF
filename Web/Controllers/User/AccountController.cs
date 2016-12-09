@@ -18,23 +18,23 @@ namespace Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Register()
         {
-            Model.User user = new Model.User();
-            ViewBag.Model = JsonUtls.ToJson(user);
+            Model.User user = new Model.User();            
             return View();
         }
 
         // GET: Account
         [HttpPost]
-        public JsonResult Create(Model.User user)
+        public JsonResult Register(Model.User user)
         {
             user.CreateTime = DateTime.Now;
             if(!ModelState.IsValid)
             {
-                return Json(user);
+                JsonResultModel result = Common.GetErrorMessage(ModelState);
+                return Json(result);
             }
-            user.CreateTime = DateTime.Now;
+           
             //_userService.CreateUser(user);
 
             var ResultJson = new { State = 1 };
