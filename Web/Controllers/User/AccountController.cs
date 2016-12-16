@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Common;
+using Model;
 
 namespace Web.Controllers
 {
@@ -23,7 +24,6 @@ namespace Web.Controllers
             return View();
         }
 
-        // GET: Account
         [HttpPost]
         public JsonResult Register(Model.User user)
         {
@@ -34,7 +34,7 @@ namespace Web.Controllers
                 return Json(result);
             }
            
-            //_userService.CreateUser(user);
+            _userService.CreateUser(user);
 
             var ResultJson = new { State = 1 };
 
@@ -46,10 +46,53 @@ namespace Web.Controllers
         {
             return View();
         }
-        public string Find()
+
+        [HttpPost]
+        public JsonResult Login(LoginHistory model)
         {
-            Model.User us = _userService.Find(new Guid("7DD9EF20-EE4B-448A-9221-B800250A3DBB"));
-            return us.UserName;
+            JsonResultModel result;
+
+            if (!ModelState.IsValid)
+            {
+                result = Common.GetErrorMessage(ModelState);
+                return Json(result);
+            }
+
+            var user = _userService.Find(model.Account);
+            if (user == null)
+            {
+                result = new JsonResultModel()
+                {
+                    State = 0,
+                    Message = "账号不存在"
+                };
+                return Json(result);
+            }
+
+            if (user.Password != model.Password)
+            {
+                result = new JsonResultModel()
+                {
+                    State = 0,
+                    Message = "密码不正确"
+                };
+                return Json(result);
+            }
+            else
+            {
+                string token = Guid.NewGuid().ToString();
+                HttpCookie cookie = new HttpCookie("token",token);
+                Response.Cookies.Add(cookie);
+                Session[token] = user;
+
+                result = new JsonResultModel()
+                {
+                    State = 1,
+                    Message = ""
+                };
+                return Json(result);
+
+            }
         }
     }
 }

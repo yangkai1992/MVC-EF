@@ -23,17 +23,33 @@ namespace Repository
             }
         }
 
+        public virtual IQueryable<T> Table
+        {
+            get
+            {
+                return this.DbSet;
+            }
+        }
+
+        public virtual IQueryable<T> TableNoTracking
+        {
+            get
+            {
+                return this.DbSet.AsNoTracking();
+            }
+        }
+
         public EfRepository(IDbContext context)
         {
             this._context = context;
         }
 
-        public T GetById(Guid id)
+        public virtual T GetById(Guid id)
         {
             return this.DbSet.Find(id);
         }
 
-        public void Insert(T entity)
+        public virtual void Insert(T entity)
         {
             try
             {
@@ -41,6 +57,24 @@ namespace Repository
                     throw new ArgumentNullException("entity");
 
                 this.DbSet.Add(entity);
+                this._context.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
+        }
+
+        public virtual void Insert(IEnumerable<T> entities)
+        {
+            try
+            {
+                if (entities == null)
+                    throw new ArgumentNullException("entities");
+
+                foreach (var entity in entities)
+                    this.DbSet.Add(entity);
+
                 this._context.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
@@ -64,6 +98,21 @@ namespace Repository
             }
         }
 
+        public virtual void Update(IEnumerable<T> entities)
+        {
+            try
+            {
+                if (entities == null)
+                    throw new ArgumentNullException("entities");
+
+                this._context.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
+        }
+
         public void Delete(T entity)
         {
             try
@@ -72,6 +121,24 @@ namespace Repository
                     throw new ArgumentNullException("entity");
 
                 this.DbSet.Remove(entity);
+                this._context.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                throw new Exception(GetFullErrorText(dbEx), dbEx);
+            }
+        }
+
+        public virtual void Delete(IEnumerable<T> entities)
+        {
+            try
+            {
+                if (entities == null)
+                    throw new ArgumentNullException("entities");
+
+                foreach (var entity in entities)
+                    this.DbSet.Remove(entity);
+
                 this._context.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)

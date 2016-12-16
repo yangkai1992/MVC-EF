@@ -49,9 +49,11 @@
                 url: '@Url.Content("~/Account/Register")',
                 data:$scope.user
             }).success(function (data) {
-                if (data.State != 1)
-                {
+                if (data.State != 1) {
                     Widget.multialert(data.Message);
+                }
+                else {
+                    location.href = '@Url.Content("~/Account/Login")'
                 }
             })    
         }

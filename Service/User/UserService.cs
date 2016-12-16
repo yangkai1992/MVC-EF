@@ -11,10 +11,12 @@ namespace Service
     public class UserService:IUserService
     {
         private readonly IRepository<User> _userRepository;
+        private readonly IRepository<LoginHistory> _loginHistoryRepository;
 
-        public UserService(IRepository<User> userRepository)
+        public UserService(IRepository<User> userRepository,IRepository<LoginHistory> loginHistoryRepository)
         {
             this._userRepository = userRepository;
+            this._loginHistoryRepository = loginHistoryRepository;
         }
 
         public void CreateUser(User user)
@@ -47,10 +49,36 @@ namespace Service
             _userRepository.Update(user);
         }
 
-
-        public User Find(Guid id)
+        /// <summary>
+        /// 按账号查询用户
+        /// </summary>
+        /// <param name="account">账号</param>
+        /// <returns></returns>
+        public User Find(string account)
         {
-            return _userRepository.GetById(id);
+            var query = _userRepository.Table;
+            return query.FirstOrDefault<User>(m => m.Account == account);
+        }
+
+        public void CreateLoginHistory(LoginHistory loginHistory)
+        {
+            if (loginHistory == null)
+            {
+                throw new ArgumentNullException("loginHistory");
+            }
+
+            _loginHistoryRepository.Insert(loginHistory);
+        }
+
+
+        public void UpdateLoginHistory(LoginHistory loginHistory)
+        {
+            if (loginHistory == null)
+            {
+                throw new ArgumentNullException("loginHistory");
+            }
+
+            _loginHistoryRepository.Update(loginHistory);
         }
     }
 }

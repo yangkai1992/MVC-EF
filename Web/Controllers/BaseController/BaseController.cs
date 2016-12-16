@@ -17,7 +17,7 @@ namespace Web.Controllers
 
             LogHelper.Error(message, filterContext.Exception);
 
-            if (Request.Headers["X-Requested-With"] != "XMLHttpRequest")
+            if (WebHelper.IsAjax())
             {
                 ViewResult viewResult = new ViewResult()
                 {
