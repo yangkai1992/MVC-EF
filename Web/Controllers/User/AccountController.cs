@@ -8,7 +8,7 @@ using Common;
 
 namespace Web.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly IUserService _userService;
 
@@ -20,7 +20,6 @@ namespace Web.Controllers
         [HttpGet]
         public ActionResult Register()
         {
-            Model.User user = new Model.User();            
             return View();
         }
 
@@ -42,6 +41,11 @@ namespace Web.Controllers
             return Json(ResultJson);
         }
 
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
         public string Find()
         {
             Model.User us = _userService.Find(new Guid("7DD9EF20-EE4B-448A-9221-B800250A3DBB"));

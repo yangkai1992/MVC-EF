@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : AuthorizationController
     {
         // GET: Home
         public ActionResult Index()

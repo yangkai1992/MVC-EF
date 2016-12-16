@@ -39,10 +39,10 @@
 
         $scope.submit = function () {
             //表单验证
-            //var valid = $("#tabUser").validate();
-            //if (!valid) {
-            //    return;
-            //}
+            var valid = $("#tabUser").validate();
+            if (!valid) {
+                return;
+            }
 
             $http({
                 method: "POST",
