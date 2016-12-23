@@ -156,6 +156,7 @@
     <Content Include="Scripts\Plugin\dist\js\demo.js" />
     <Content Include="Scripts\Plugin\dist\js\pages\dashboard.js" />
     <Content Include="Scripts\Plugin\dist\js\pages\dashboard2.js" />
+    <Content Include="Scripts\Plugin\fonts\fontawesome-webfont.svg" />
     <Content Include="Scripts\Plugin\jquery.tmpl.min.js" />
     <Content Include="Scripts\Plugin\plugins\bootstrap-slider\bootstrap-slider.js" />
     <Content Include="Scripts\Plugin\plugins\bootstrap-slider\slider.css" />
@@ -1024,6 +1025,12 @@
     <Content Include="Scripts\Plugin\plugins\datatables\extensions\TableTools\Readme.md" />
     <Content Include="Scripts\Plugin\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Scripts\Plugin\plugins\input-mask\phone-codes\phone-codes.json" />
+    <Content Include="Scripts\Plugin\fonts\fontawesome-webfont.eot" />
+    <Content Include="Scripts\Plugin\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Scripts\Plugin\fonts\fontawesome-webfont.woff" />
+    <Content Include="Scripts\Plugin\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Scripts\Plugin\fonts\ionicons.eot" />
+    <Content Include="Scripts\Plugin\fonts\ionicons.ttf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
