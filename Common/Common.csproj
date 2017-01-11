@@ -66,6 +66,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cache\ICache.cs" />
+    <Compile Include="Cache\IISCache.cs" />
+    <Compile Include="Cache\RedisCache.cs" />
+    <Compile Include="Cache\RedisConnectionWrapper.cs" />
     <Compile Include="Ioc\AppDomainTypeFinder.cs" />
     <Compile Include="Ioc\ContainerManager.cs" />
     <Compile Include="Ioc\Engine.cs" />
