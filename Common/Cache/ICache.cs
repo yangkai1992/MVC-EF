@@ -9,7 +9,7 @@ namespace Common
     public interface ICache
     {
         T Get<T>(string key);
-        void Set<T>(string key, T val, int cacheTime);
+        void Set(string key, object val, int cacheTime);
         void Remove(string key);
         /// <summary>
         /// 清空所有缓存

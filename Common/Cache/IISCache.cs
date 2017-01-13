@@ -30,7 +30,7 @@ namespace Common
             return (T)obj;
         }
 
-        public void Set<T>(string key, T val, int cacheTime)
+        public void Set(string key, object val, int cacheTime)
         {
             if (val == null)
                 return;

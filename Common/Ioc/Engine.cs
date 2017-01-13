@@ -54,5 +54,15 @@ namespace Common
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
+
+        /// <summary>
+        /// 解析依赖
+        /// </summary>
+        /// <typeparam name="T">T</typeparam>
+        /// <returns></returns>
+        public T Resolve<T>() where T : class
+        {
+            return ContainerManager.Resolve<T>();
+        }
     }
 }

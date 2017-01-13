@@ -21,11 +21,28 @@ namespace Common
         /// <returns>json字符串</returns>
         public static string ToJson(object o) 
         {
-            var convert = new IsoDateTimeConverter();
+            IsoDateTimeConverter convert = new IsoDateTimeConverter();
             convert.DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
-            return JsonConvert.SerializeObject(o, convert);        
+            return JsonConvert.SerializeObject(o, convert);            
         }
 
+        /// <summary>
+        /// json反序列化
+        /// </summary>
+        /// <typeparam name="T">类型</typeparam>
+        /// <param name="json">json字符串</param>
+        /// <returns></returns>
+        public static T FromJson<T>(string json)
+        {
+            try
+            {
+                return JsonConvert.DeserializeObject<T>(json);
+            }
+            catch
+            {
+                return default(T);
+            }
+        }
 
         /// <summary>
         /// DataTable转json
@@ -54,23 +71,23 @@ namespace Common
         /// <typeparam name="T">待反序列化的类型</typeparam>
         /// <param name="jsonString">待反序列化的Json字符串</param>
         /// <returns>反序列化后的对象</returns>
-        public static T FromJson<T>(this string jsonString) where T : class
-        {
-            T ouput = null;
-            if (typeof(T).IsGenericType && typeof(T).GetGenericTypeDefinition() == typeof(Dictionary<,>))
-            {
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-                ouput = serializer.Deserialize<T>(jsonString);
-            }
-            else
-            {
-                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(T));
-                using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))
-                {
-                    ouput = (T)ser.ReadObject(ms);
-                }
-            }
-            return ouput;
-        }
+        //public static T FromJson<T>(this string jsonString) where T : class
+        //{
+        //    T ouput = null;
+        //    if (typeof(T).IsGenericType && typeof(T).GetGenericTypeDefinition() == typeof(Dictionary<,>))
+        //    {
+        //        JavaScriptSerializer serializer = new JavaScriptSerializer();
+        //        ouput = serializer.Deserialize<T>(jsonString);
+        //    }
+        //    else
+        //    {
+        //        DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(T));
+        //        using (MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))
+        //        {
+        //            ouput = (T)ser.ReadObject(ms);
+        //        }
+        //    }
+        //    return ouput;
+        //}
     }
 }
