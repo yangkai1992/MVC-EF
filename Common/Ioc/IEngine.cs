@@ -11,5 +11,12 @@ namespace Common
         ContainerManager ContainerManager { get; }
 
         void Initialize();
+
+        /// <summary>
+        /// 解析依赖
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        T Resolve<T>() where T : class;
     }
 }

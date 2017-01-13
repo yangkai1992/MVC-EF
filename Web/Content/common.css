@@ -1,0 +1,63 @@
+﻿body .field-validation-error,
+body .v-error {
+    background-color:#ffe3e3;
+    border-color:red;
+}
+
+body .v-error-icon {
+    background: url(Icon/lc-icons.png) 0 3px no-repeat #ffe3e3;
+    padding: 17px 0px 0px 17px;
+    display: inline-block;
+    line-height: 16px;
+}
+
+/*alert:start*/
+.ui-alert {
+    position: absolute;
+    z-index: 99999999;
+    top: 0;
+    left: 0;
+}
+
+.ui-alert-mask {
+    background: #000;
+    opacity: .3;
+    width: 1400px;
+    height: 9999px;
+    top: 0;
+    left: 0;
+}
+
+/*.ui-alert-main {
+    position: absolute;
+    background: #000;
+    opacity: .4;
+    top: 100px;
+    left: 0;
+    width: 9999px;
+    height: 300px;
+}*/
+
+.ui-alert-content {
+    position: absolute;
+    background: #000;
+    opacity: .7;
+    top: 100px;
+    left: 300px;
+    width: 40%;
+    color: #fff;
+    box-shadow:0 0 15px #fff;
+}
+
+.ui-alert-text {
+    padding: 20px;
+    margin-bottom: 45px;
+}
+
+.ui-alert-action {
+    padding: 20px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+/*alert:end*/

@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Common;
+using Model;
 
 namespace Web.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly IUserService _userService;
 
@@ -17,29 +19,80 @@ namespace Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Register()
         {
             return View();
         }
 
-        // GET: Account
         [HttpPost]
-        public ActionResult Create(Model.User user)
+        public JsonResult Register(Model.User user)
         {
+            user.CreateTime = DateTime.Now;
             if(!ModelState.IsValid)
             {
-                return View("../Home/Index", user);
+                JsonResultModel result = Common.GetErrorMessage(ModelState);
+                return Json(result);
             }
-            user.CreateTime = DateTime.Now;
+           
             _userService.CreateUser(user);
 
+            var ResultJson = new { State = 1 };
+
+            return Json(ResultJson);
+        }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
             return View();
         }
 
-        public string Find()
+        [HttpPost]
+        public JsonResult Login(LoginHistory model)
         {
-            Model.User us = _userService.Find(new Guid("7DD9EF20-EE4B-448A-9221-B800250A3DBB"));
-            return us.UserName;
+            JsonResultModel result;
+
+            if (!ModelState.IsValid)
+            {
+                result = Common.GetErrorMessage(ModelState);
+                return Json(result);
+            }
+
+            var user = _userService.Find(model.Account);
+            if (user == null)
+            {
+                result = new JsonResultModel()
+                {
+                    State = 0,
+                    Message = "账号不存在"
+                };
+                return Json(result);
+            }
+
+            if (user.Password != model.Password)
+            {
+                result = new JsonResultModel()
+                {
+                    State = 0,
+                    Message = "密码不正确"
+                };
+                return Json(result);
+            }
+            else
+            {
+                string token = Guid.NewGuid().ToString();
+                HttpCookie cookie = new HttpCookie("token",token);
+                Response.Cookies.Add(cookie);
+                Session[token] = user;
+
+                result = new JsonResultModel()
+                {
+                    State = 1,
+                    Message = ""
+                };
+                return Json(result);
+
+            }
         }
     }
 }

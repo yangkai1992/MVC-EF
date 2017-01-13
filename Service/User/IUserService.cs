@@ -27,6 +27,10 @@ namespace Service
         /// <param name="user"></param>
         void UpdateUser(User user);
 
-        User Find(Guid id);
+        User Find(string account);
+
+        void CreateLoginHistory(LoginHistory loginHistory);
+
+        void UpdateLoginHistory(LoginHistory loginHistory);
     }
 }

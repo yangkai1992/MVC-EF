@@ -26,5 +26,17 @@ namespace Common
 
             return Singleton<IEngine>.Instance;
         }
+
+        public static IEngine Current
+        {
+            get
+            {
+                if (Singleton<IEngine>.Instance == null)
+                {
+                    Initialize(false);
+                }
+                return Singleton<IEngine>.Instance;
+            }
+        }
     }
 }
