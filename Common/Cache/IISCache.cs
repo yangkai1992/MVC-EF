@@ -34,7 +34,8 @@ namespace Common
         {
             if (val == null)
                 return;
-            var expiry=DateTime.UtcNow.AddMinutes(cacheTime);
+
+            var expiry = DateTime.UtcNow.AddMinutes(cacheTime);
             _cache.Insert(key, val, null, expiry, Cache.NoSlidingExpiration);
         }
 

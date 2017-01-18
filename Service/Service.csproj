@@ -44,6 +44,10 @@
     <Compile Include="User\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{9d9bee0d-5a9d-4610-b586-e3251e0c702f}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{9e15916a-44d1-48fe-a1c7-e9c8302da01d}</Project>
       <Name>Model</Name>

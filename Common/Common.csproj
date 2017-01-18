@@ -75,6 +75,8 @@
     <Compile Include="Cache\IISCache.cs" />
     <Compile Include="Cache\RedisCache.cs" />
     <Compile Include="Cache\RedisConnectionWrapper.cs" />
+    <Compile Include="ConfigHelper.cs" />
+    <Compile Include="EncryptHelper.cs" />
     <Compile Include="Ioc\AppDomainTypeFinder.cs" />
     <Compile Include="Ioc\ContainerManager.cs" />
     <Compile Include="Ioc\Engine.cs" />
@@ -89,16 +91,6 @@
     <Compile Include="Session\CustomSessionStateStoreProvider .cs" />
     <Compile Include="Session\SessionState.cs" />
     <Compile Include="WebHelper.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Repository\Repository.csproj">
-      <Project>{404bbbb2-404e-4239-917c-7a28cd5e89aa}</Project>
-      <Name>Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Service\Service.csproj">
-      <Project>{7d2b9413-a0c3-448d-8642-e82e9c16526e}</Project>
-      <Name>Service</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

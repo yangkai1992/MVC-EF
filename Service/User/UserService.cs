@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Common;
+using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace Service
             {
                 throw new ArgumentNullException("user");
             }
+            user.Password = EncryptHelper.GetMD5(user.Password);
 
             _userRepository.Insert(user);
         }

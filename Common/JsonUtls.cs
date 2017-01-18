@@ -23,7 +23,7 @@ namespace Common
         {
             IsoDateTimeConverter convert = new IsoDateTimeConverter();
             convert.DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
-            return JsonConvert.SerializeObject(o, convert);            
+            return JsonConvert.SerializeObject(o, convert);
         }
 
         /// <summary>

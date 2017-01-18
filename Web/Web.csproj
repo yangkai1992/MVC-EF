@@ -41,9 +41,9 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\DLL\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac, Version=4.2.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.2.1\lib\net45\Autofac.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Autofac.Integration.Mvc">
       <HintPath>..\DLL\Autofac.Integration.Mvc.dll</HintPath>
@@ -966,7 +966,9 @@
     <Content Include="Scripts\Plugin\vue.min.js" />
     <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\UIHelp.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -977,6 +979,7 @@
     <Compile Include="Controllers\BaseController\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\User\AccountController.cs" />
+    <Compile Include="Controllers\User\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1037,6 +1040,7 @@
     <Content Include="Scripts\Plugin\fonts\fontawesome-webfont.woff2" />
     <Content Include="Scripts\Plugin\fonts\ionicons.eot" />
     <Content Include="Scripts\Plugin\fonts\ionicons.ttf" />
+    <Content Include="Views\User\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

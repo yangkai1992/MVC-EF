@@ -46,7 +46,7 @@
     <Compile Include="EfRepository.cs" />
     <Compile Include="IDbContext.cs" />
     <Compile Include="IRepository.cs" />
-    <Compile Include="Mapping\UserMap.cs" />
+    <Compile Include="Mapping\User\UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

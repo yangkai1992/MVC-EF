@@ -46,6 +46,8 @@ namespace Web.Controllers
                 return;
             }
 
+            ViewBag.CurrentUser = CurrentUser;
+
             base.OnAuthorization(filterContext);
         }
     }

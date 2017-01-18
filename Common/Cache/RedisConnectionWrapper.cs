@@ -21,7 +21,7 @@ namespace Common
 
         private string GetConnectionString()
         {
-            return "localhost";
+            return ConfigHelper.GetConnectionString("redis");
         }
 
         private ConnectionMultiplexer GetConnection()

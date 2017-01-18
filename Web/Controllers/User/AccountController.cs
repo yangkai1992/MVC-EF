@@ -33,7 +33,12 @@ namespace Web.Controllers
                 JsonResultModel result = Common.GetErrorMessage(ModelState);
                 return Json(result);
             }
-           
+            var oldUser=_userService.Find(user.Account);
+            if (oldUser != null)
+            {
+                return Json(new JsonResultModel { State = 0, Message = "账号已经存在" });
+            }
+
             _userService.CreateUser(user);
 
             var ResultJson = new { State = 1 };
@@ -69,7 +74,7 @@ namespace Web.Controllers
                 return Json(result);
             }
 
-            if (user.Password != model.Password)
+            if (user.Password != EncryptHelper.GetMD5(model.Password))
             {
                 result = new JsonResultModel()
                 {
@@ -81,7 +86,7 @@ namespace Web.Controllers
             else
             {
                 string token = Guid.NewGuid().ToString();
-                HttpCookie cookie = new HttpCookie("token",token);
+                HttpCookie cookie = new HttpCookie("token", token);
                 Response.Cookies.Add(cookie);
                 Session[token] = user;
 

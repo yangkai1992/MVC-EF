@@ -19,10 +19,11 @@ namespace Common
             //注册服务
             builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
 
-            builder.Register<IDbContext>(c => new DataContext("Password=123456;Persist Security Info=True;User ID=sa;Initial Catalog=Test;Data Source=127.0.0.1")).InstancePerLifetimeScope();
+            builder.Register<IDbContext>(c => new DataContext(ConfigHelper.GetConnectionString("DefaultConnection"))).InstancePerLifetimeScope();
 
             builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
 
+            builder.RegisterType<IISCache>().As<ICache>().InstancePerLifetimeScope();
         }
     }
 }

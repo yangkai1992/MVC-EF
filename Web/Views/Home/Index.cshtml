@@ -1,17 +1,3 @@
 ﻿@model Model.User
 
-<div>
-    @using(Html.BeginForm("Create","Account",FormMethod.Post))
-    {
-        @Html.HiddenFor(m => m.Id);
-        @Html.LabelFor(m=>m.UserName)
-        @Html.TextBoxFor(m=>m.UserName)
-        @Html.ValidationMessageFor(m => m.UserName)
-        @Html.LabelFor(m => m.Account)
-        @Html.TextBoxFor(m => m.Account)
-        @Html.LabelFor(m => m.Password)
-        @Html.TextBoxFor(m => m.Password)
-        <input type="submit" value="提交" />
-    }
-</div>
 

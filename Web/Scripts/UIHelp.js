@@ -26,6 +26,8 @@ Widget.multialert = function (messages) {
                     </div>\
                 </div>\
             </div>";
+    if (messages.constructor != Array)
+        messages = [messages];
     var data = { message: messages }
     var $obj = $.tmpl(tmpl, data);
     $obj.find(".ui-alert-close").click(function () {
