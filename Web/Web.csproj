@@ -984,6 +984,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\JsonResultModel.cs" />
+    <Compile Include="Models\PagingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1041,6 +1042,7 @@
     <Content Include="Scripts\Plugin\fonts\ionicons.eot" />
     <Content Include="Scripts\Plugin\fonts\ionicons.ttf" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Shared\_Paging.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

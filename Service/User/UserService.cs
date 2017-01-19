@@ -13,11 +13,13 @@ namespace Service
     {
         private readonly IRepository<User> _userRepository;
         private readonly IRepository<LoginHistory> _loginHistoryRepository;
+        private readonly IDbContext _dbContext;
 
-        public UserService(IRepository<User> userRepository,IRepository<LoginHistory> loginHistoryRepository)
+        public UserService(IRepository<User> userRepository,IRepository<LoginHistory> loginHistoryRepository,IDbContext dbContext)
         {
             this._userRepository = userRepository;
             this._loginHistoryRepository = loginHistoryRepository;
+            this._dbContext = dbContext;
         }
 
         public void CreateUser(User user)

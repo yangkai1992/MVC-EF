@@ -20,7 +20,7 @@ namespace Web.Tests
             IDbContext context = new DataContext("Password=123456;Persist Security Info=True;User ID=sa;Initial Catalog=Test;Data Source=127.0.0.1") as IDbContext;
             IRepository<User> repository = new EfRepository<User>(context);
             IRepository<LoginHistory> loginHistory = new EfRepository<LoginHistory>(context);
-            UserService userService = new UserService(repository,loginHistory);
+            UserService userService = new UserService(repository, loginHistory, context);
 
             User user = new User()
             {

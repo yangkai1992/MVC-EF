@@ -21,5 +21,13 @@ namespace Common
         {
             return HttpContext.Current.Request.Headers["X-Requested-With"] == "XMLHttpRequest";
         }
+
+        public static int GetIntQuery(string paramName)
+        {
+            string queryParam = HttpContext.Current.Request.QueryString.Get(paramName);
+            int result = 0;
+            int.TryParse(queryParam, out result);
+            return result;
+        }
     }
 }

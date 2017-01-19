@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,14 @@ namespace Web.Controllers.User
         // GET: User
         public ActionResult Index()
         {
-            return View();
+            int pageIndex = WebHelper.GetIntQuery("PageIndex");
+            if (pageIndex < 1)
+                pageIndex = 1;
+
+            List<Model.User> users = new List<Model.User>();
+
+            ViewBag.PageInfo = new PagingModel { PageIndex = pageIndex, PageSize = 10, TotalCount = 150, Url = Url.Content("~/User/Index") };
+            return View(users);
         }
     }
 }

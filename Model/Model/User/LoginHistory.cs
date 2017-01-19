@@ -18,13 +18,15 @@ namespace Model
 
         public Guid Id { get; set; }
 
-        [NotMapped]
         [Required(ErrorMessage="请输入账号")]
         public string Account { get; set; }
 
         [NotMapped]
         [Required(ErrorMessage="请输入密码")]
         public string Password { get; set; }
+
+        [NotMapped]
+        public string Code { get; set; }
 
         public DateTime LastLoginTime { get; set; }
 

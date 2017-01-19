@@ -31,7 +31,8 @@ namespace Web
                       , "~/Scripts/Plugin/bootstrap/ionicons-2.0.1.min.css"
                       , "~/Scripts/Plugin/dist/css/AdminLTE.css"
                       , "~/Scripts/Plugin/dist/css/skins/_all-skins.css"
-                      , "~/Scripts/Plugin/plugins/iCheck/square/blue.css"));
+                      , "~/Scripts/Plugin/plugins/iCheck/square/blue.css"
+                      , "~/Scripts/Plugin/plugins/datatables/dataTables.bootstrap.css"));
         }
     }
 }
