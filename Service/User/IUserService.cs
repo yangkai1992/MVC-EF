@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,5 +33,7 @@ namespace Service
         void CreateLoginHistory(LoginHistory loginHistory);
 
         void UpdateLoginHistory(LoginHistory loginHistory);
+
+        List<User> PageSearch(int pageIndex, int pageSize, out int totalCount, IEnumerable<string> wheres = null, string orderBy = "", params SqlParameter[] sqlParameters);
     }
 }

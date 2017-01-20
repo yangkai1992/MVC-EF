@@ -3,6 +3,7 @@ using Model;
 using Repository;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,6 +84,13 @@ namespace Service
             }
 
             _loginHistoryRepository.Update(loginHistory);
+        }
+
+
+        public List<User> PageSearch(int pageIndex,int pageSize,out int totalCount,IEnumerable<string> wheres=null,string orderBy="",params SqlParameter[] sqlParameters)
+        {
+            string sql = SQLUtls.GeneratePageSearchSQL(pageIndex, pageSize, "[user]", wheres, orderBy);
+            return _dbContext.PageSearch<User>(sql, out totalCount, sqlParameters);
         }
     }
 }

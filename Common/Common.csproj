@@ -90,6 +90,7 @@
     <Compile Include="Ioc\Singleton.cs" />
     <Compile Include="Session\CustomSessionStateStoreProvider .cs" />
     <Compile Include="Session\SessionState.cs" />
+    <Compile Include="SQLUtls.cs" />
     <Compile Include="WebHelper.cs" />
   </ItemGroup>
   <ItemGroup>

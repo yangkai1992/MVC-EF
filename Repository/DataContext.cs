@@ -74,16 +74,49 @@ namespace Repository
             return result;
         }
 
-        public SqlDataReader PageSearch(string sql, params object[] parameters)
+        public List<T> PageSearch<T>(string sql,out int totalCount ,params object[] parameters) where T:new()
         {
             SqlConnection connection = (SqlConnection)this.Database.Connection;
             SqlCommand command = new SqlCommand(sql, connection);
             command.Parameters.AddRange(parameters.ToArray());
+            connection.Open();
             SqlDataReader result = command.ExecuteReader();
-            return result;
+
+            List<T> resultList = new List<T>();
+            totalCount = 0;
+
+            if (result != null)
+            {
+                while (result.Read())
+                {
+                    T current = new T();
+                    foreach (var pi in typeof(T).GetProperties())
+                    {
+                        var fieldName = pi.Name;
+                        if (!pi.CanWrite)
+                        {
+                            continue;
+                        }
+
+                        object value = result[fieldName];
+                        if (value != DBNull.Value)
+                        {
+                            pi.SetValue(current, value);
+                        }
+                    }
+                    resultList.Add(current);
+                }
+
+                result.NextResult();
+                result.Read();
+                totalCount = result.GetInt32(0);
+            }
+            connection.Close();
+
+            return resultList;
         }
 
-        public DataSet ExecuteSQl(string sql, params object[] parameters)
+        public List<T> ExecuteSQL<T>(string sql, params object[] parameters) where T : new()
         {
             SqlConnection connection = (SqlConnection)this.Database.Connection;
             SqlCommand command = new SqlCommand(sql, connection);
@@ -91,7 +124,40 @@ namespace Repository
             var adaptor = new SqlDataAdapter(command);
             var ds = new DataSet();
             adaptor.Fill(ds);
-            return ds;
+
+            if (ds.Tables.Count == 0)
+            {
+                return null;
+            }
+
+            DataTable table = ds.Tables[0];
+            List<T> resultList = new List<T>();
+            foreach (DataRow row in table.Rows)
+            {
+                T current = new T();
+                foreach (var pi in typeof(T).GetProperties())
+                {
+                    string fieldName = pi.Name;
+                    if (!row.Table.Columns.Contains(fieldName))
+                    {
+                        continue;
+                    }
+
+                    if (!pi.CanWrite)
+                    {
+                        continue;
+                    }
+
+                    object value = row[fieldName];
+                    if (value != DBNull.Value)
+                    {
+                        pi.SetValue(current, value);
+                    }
+                }
+                resultList.Add(current);
+            }
+
+            return resultList;
         }
     }
 }

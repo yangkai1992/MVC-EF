@@ -18,11 +18,16 @@ namespace Web
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/Scripts/Plugin/angular.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/vue").Include(
+                        "~/Scripts/Plugin/vue.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/AdminLTE").Include(
                         "~/Scripts/Plugin/bootstrap/js/bootstrap.js"
                         , "~/Scripts/Plugin/dist/js/app.js"
                         , "~/Scripts/Plugin/plugins/jQuery/jquery-2.2.3.min.js"
-                        , "~/Scripts/Plugin/plugins/iCheck/icheck.js"));
+                        , "~/Scripts/Plugin/plugins/iCheck/icheck.js"
+                        , "~/Scripts/Plugin/plugins/datepicker/bootstrap-datepicker.js"
+                        , "~/Scripts/Plugin/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/common.css"
@@ -32,7 +37,8 @@ namespace Web
                       , "~/Scripts/Plugin/dist/css/AdminLTE.css"
                       , "~/Scripts/Plugin/dist/css/skins/_all-skins.css"
                       , "~/Scripts/Plugin/plugins/iCheck/square/blue.css"
-                      , "~/Scripts/Plugin/plugins/datatables/dataTables.bootstrap.css"));
+                      , "~/Scripts/Plugin/plugins/datatables/dataTables.bootstrap.css"
+                      , "~/Scripts/Plugin/plugins/datepicker/datepicker3.css"));
         }
     }
 }

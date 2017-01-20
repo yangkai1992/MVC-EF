@@ -3,17 +3,59 @@
     PagingModel paging=ViewBag.PageInfo as PagingModel;
 }
 
-<section class="content">
+<section class="content" id="vueContent">
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">表格标题</h3>
-                </div>
-                <!-- /.box-header -->
                 <div class="box-body">
                     <div class="dataTables_wrapper form-inline dt-bootstrap">
-                        <div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row">
+                        <div class="form-horizontal">
+                            <div style="margin-bottom:5px" class="form-group col-sm-4">
+                                <label class="col-sm-4 control-label">账号</label>
+                                <div class="col-sm-8">
+                                    <input type="text" style="width:100%" class="form-control" v-model="account"/>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom:5px" class="form-group col-sm-4">
+                                <label class="col-sm-4 control-label">用户名</label>
+                                <div class="col-sm-8">
+                                    <input type="text" style="width:100%" class="form-control" v-model="userName"/>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom:5px" class="form-group col-sm-4">
+                                <label class="col-sm-4 control-label">邮箱</label>
+                                <div class="col-sm-8">
+                                    <input type="text" style="width:100%" class="form-control" v-model="email" />
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom:5px" class="form-group col-sm-4">
+                                <label class="col-sm-4 control-label">开始时间</label>
+                                <div class="col-sm-8 input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" style="width:100%" class="form-control" id="startDatePicker" v-model="startTime" />
+                                </div>
+                            </div>
+                            <div style="margin-bottom:5px" class="form-group col-sm-4">
+                                <label class="col-sm-4 control-label">结束时间</label>
+                                <div class="col-sm-8 input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" style="width:100%" class="form-control" id="endDatePicker" v-model="endTime" />
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom:5px;text-align:center" class="form-group col-sm-12">
+                                <button type="submit" v-on:click="search" class="btn btn-info">搜索</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-sm-12">
                                 <table class="table table-bordered table-hover dataTable" role="grid">
                                     <thead>
@@ -22,21 +64,23 @@
                                             <th>用户名</th>
                                             <th>邮箱</th>
                                             <th>头像</th>
+                                            <th>创建时间</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var item in Model)
                                         {
-                                            <tr>
-                                                <td>@item.Account</td>
-                                                <td>@item.UserName</td>
-                                                <td>@item.Email</td>
-                                                <td>@item.HeadImage</td>
-                                                <td>
-                                                    查看 编辑
-                                                </td>
-                                            </tr>
+                                        <tr>
+                                            <td>@item.Account</td>
+                                            <td>@item.UserName</td>
+                                            <td>@item.Email</td>
+                                            <td>@item.HeadImage</td>
+                                            <td>@item.CreateTime.ToString("yyyy-MM-dd HH:MM")</td>
+                                            <td>
+                                                查看 编辑
+                                            </td>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>
@@ -50,3 +94,25 @@
         </div>
     </div>
 </section>
+<script>
+    $(function () {
+        $("#startDatePicker").datepicker({ language: 'zh-CN',autoclose: true });
+        $("#endDatePicker").datepicker({ language: 'zh-CN',autoclose: true });
+    })
+
+    new Vue({
+        el: "#vueContent",
+        data:{
+            account: '',
+            userName: '',
+            email: '',
+            startTime: '',
+            endTime:''
+        },
+        methods: {
+            search: function () {
+                alert(this.startTime)
+            }
+        }
+    })
+</script>

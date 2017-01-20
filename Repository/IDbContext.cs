@@ -27,14 +27,13 @@ namespace Repository
         /// <param name="sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        SqlDataReader PageSearch(string sql, params object[] parameters);
-
+        List<T> PageSearch<T>(string sql, out int totalCount, params object[] parameters) where T : new();
         /// <summary>
         /// 执行sql
         /// </summary>
         /// <param name="sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        DataSet ExecuteSQl(string sql, params object[] parameters);
+        List<T> ExecuteSQL<T>(string sql, params object[] parameters) where T : new();
     }
 }

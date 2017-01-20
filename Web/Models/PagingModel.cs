@@ -17,7 +17,13 @@ namespace Web
 
         public int TotalPages
         {
-            get { return TotalCount / PageSize;}
+            get 
+            {
+                int remainder = TotalCount % PageSize;
+                if (remainder > 0)
+                    return TotalCount / PageSize + 1;
+                return TotalCount / PageSize;
+            }
         }
     }
 }
