@@ -17,7 +17,7 @@ namespace Web.Controllers
 
             LogHelper.Error(message, filterContext.Exception);
 
-            if (WebHelper.IsAjax())
+            if (!WebHelper.IsAjax())
             {
                 ViewResult viewResult = new ViewResult()
                 {

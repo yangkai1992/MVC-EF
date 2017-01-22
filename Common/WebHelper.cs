@@ -29,5 +29,19 @@ namespace Common
             int.TryParse(queryParam, out result);
             return result;
         }
+
+        public static string GetStringQuery(string paramName)
+        {
+            string queryParam = HttpContext.Current.Request.QueryString.Get(paramName);
+            return queryParam;
+        }
+
+        public static DateTime GetDateTimeQuery(string paramName)
+        {
+            string queryParam = HttpContext.Current.Request.QueryString.Get(paramName);
+            DateTime result = DateTime.MinValue;
+            DateTime.TryParse(queryParam, out result);
+            return result;
+        }
     }
 }

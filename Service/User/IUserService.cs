@@ -10,6 +10,8 @@ namespace Service
 {
     public interface IUserService
     {
+        User GetUser(Guid id);
+
         /// <summary>
         /// 创建用户
         /// </summary>

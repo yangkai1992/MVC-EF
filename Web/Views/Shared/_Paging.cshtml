@@ -1,5 +1,11 @@
 ﻿@model PagingModel
-
+@{
+    string queryParam = string.Empty;
+    foreach (var item in Model.QueryParams)
+    {
+        queryParam += string.Format("&{0}={1}", item.Key, item.Value);
+    }
+}
 <div class="row">
     <div class="col-sm-3">
         <div class="dataTables_info" role="status">第 @Model.PageIndex 页 | 共 @Model.TotalPages 页 | @Model.TotalCount 条记录</div>
@@ -9,25 +15,25 @@
             <ul class="pagination">
                 @if (Model.PageIndex > 1)
                 {
-                    <li class="paginate_button previous"><a href="@Model.Url">首页</a></li>
-                    <li class="paginate_button"><a href="@(Model.Url+"?PageIndex="+(Model.PageIndex-1))">上一页</a></li>
+                    <li class="paginate_button previous"><a href="@(Model.Url+"?PageIndex=1"+queryParam)">首页</a></li>
+                    <li class="paginate_button"><a href="@(Model.Url + "?PageIndex=" + (Model.PageIndex - 1) + queryParam)">上一页</a></li>
                 }
                 @if (Model.PageIndex > 5)
                 {
-                    <li class="paginate_button"><a href="@(Model.Url+"?PageIndex="+(Model.PageIndex-5))">&lt;...</a></li>
+                    <li class="paginate_button"><a href="@(Model.Url + "?PageIndex=" + (Model.PageIndex - 5) + queryParam)">&lt;...</a></li>
                 }
                 @for (int i = Model.PageIndex - 4 < 1 ? 1 : Model.PageIndex - 4; i <= (Model.PageIndex + 4>Model.TotalPages?Model.TotalPages:Model.PageIndex+4); i++)
                 {
-                    <li class="paginate_button @(i==Model.PageIndex?"active":"")"><a href="@(Model.Url+"?PageIndex="+i)">@i</a></li>
+                    <li class="paginate_button @(i==Model.PageIndex?"active":"")"><a href="@(Model.Url + "?PageIndex=" + i + queryParam)">@i</a></li>
                 }
                 @if (Model.PageIndex < Model.TotalPages-4)
                 {
-                    <li class="paginate_button"><a href="@(Model.Url+"?PageIndex="+(Model.PageIndex+5))">...&gt;</a></li>
+                    <li class="paginate_button"><a href="@(Model.Url + "?PageIndex=" + (Model.PageIndex + 5) + queryParam)">...&gt;</a></li>
                 }
                 @if (Model.PageIndex < Model.TotalPages)
                 {
-                    <li class="paginate_button "><a href="@(Model.Url+"?PageIndex="+(Model.PageIndex+1))">下一页</a></li>
-                    <li class="paginate_button next"><a href="@(Model.Url+"?PageIndex="+Model.TotalPages)">尾页</a></li>
+                    <li class="paginate_button "><a href="@(Model.Url + "?PageIndex=" + (Model.PageIndex + 1) + queryParam)">下一页</a></li>
+                    <li class="paginate_button next"><a href="@(Model.Url+"?PageIndex="+Model.TotalPages+queryParam)">尾页</a></li>
                 }
             </ul>
         </div>

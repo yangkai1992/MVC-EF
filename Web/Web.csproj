@@ -116,6 +116,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\DefaultImage\user4-128x128.jpg" />
     <Content Include="Content\Icon\lc-icons.png" />
     <Content Include="Content\common.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1043,6 +1044,8 @@
     <Content Include="Scripts\Plugin\fonts\ionicons.ttf" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shared\_Paging.cshtml" />
+    <Content Include="Views\User\Detail.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

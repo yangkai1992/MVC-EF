@@ -65,7 +65,7 @@
                                             <th>邮箱</th>
                                             <th>头像</th>
                                             <th>创建时间</th>
-                                            <th>操作</th>
+                                            <th style="text-align:center">操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -77,8 +77,9 @@
                                             <td>@item.Email</td>
                                             <td>@item.HeadImage</td>
                                             <td>@item.CreateTime.ToString("yyyy-MM-dd HH:MM")</td>
-                                            <td>
-                                                查看 编辑
+                                            <td style="text-align:center">
+                                                <a href="@Url.Content("~/User/Detail/"+item.Id)">查看</a>
+                                                <a href="@Url.Content("~/User/Edit/"+item.Id)">编辑</a>
                                             </td>
                                         </tr>
                                         }
@@ -96,22 +97,56 @@
 </section>
 <script>
     $(function () {
-        $("#startDatePicker").datepicker({ language: 'zh-CN',autoclose: true });
-        $("#endDatePicker").datepicker({ language: 'zh-CN',autoclose: true });
-    })
+        $("#startDatePicker").datepicker({ autoclose: true });
+        $("#endDatePicker").datepicker({ autoclose: true });
+    });
 
     new Vue({
         el: "#vueContent",
         data:{
-            account: '',
-            userName: '',
-            email: '',
-            startTime: '',
-            endTime:''
+            account: '@Html.Raw(paging.QueryParams.ContainsKey("account")?paging.QueryParams["account"]:"")',
+            userName: '@Html.Raw(paging.QueryParams.ContainsKey("userName") ? paging.QueryParams["userName"] : "")',
+            email: '@Html.Raw(paging.QueryParams.ContainsKey("email") ? paging.QueryParams["email"] : "")',
+            startTime: '@Html.Raw(paging.QueryParams.ContainsKey("startTime") ? paging.QueryParams["startTime"] : "")',
+            endTime:'@Html.Raw(paging.QueryParams.ContainsKey("endTime") ? paging.QueryParams["endTime"] : "")'
         },
         methods: {
             search: function () {
-                alert(this.startTime)
+                if ((this.startTime == '' && this.endTime != '') || (this.startTime != '' && this.endTime == '')){
+                    Widget.alert("请同时输入开始时间和结束时间");
+                    return;
+                }
+
+                if (this.startTime != '' && this.endTime != ''){
+                    if (new Date(this.startTime) >= new Date(this.endTime)){
+                        Widget.alert("开始时间不能大于结束时间");
+                    }
+                }
+                var url = location.href;
+                if (url.indexOf("?") > 0) {
+                    url =url.substring(0,url.indexOf("?"))
+                }
+
+                url += "?pageIndex=1";
+
+                if (this.account != ''){
+                    url += "&account=" + this.account;
+                }
+
+                if (this.userName != '') {
+                    url += "&userName=" + this.userName;
+                }
+
+                if (this.email != '') {
+                    url += "&email=" + this.email;
+                }
+
+                if (this.startTime != '')
+                {
+                    url += "&startTime=" + this.startTime + "&endTime=" + this.endTime;
+                }
+
+                location.href = url;
             }
         }
     })

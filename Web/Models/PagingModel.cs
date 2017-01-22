@@ -25,5 +25,7 @@ namespace Web
                 return TotalCount / PageSize;
             }
         }
+
+        public Dictionary<string, string> QueryParams { get; set; }
     }
 }

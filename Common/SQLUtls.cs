@@ -28,7 +28,7 @@ namespace Common
 
                         select count(*) from {1} {2}";
             string where = " where 1 = 1";
-            if (wheres != null)
+            if (wheres != null && wheres.Count() > 0)
             {
                 where += " and " + string.Join(" and ", wheres);
             }

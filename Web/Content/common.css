@@ -61,3 +61,29 @@ body .v-error-icon {
     width: 100%;
 }
 /*alert:end*/
+
+.editing-tab {
+    width:100%;
+}
+
+    .editing-tab th,
+    .editing-tab td {
+        padding:8px;
+        vertical-align:top;
+        border-top:dotted 1px #ddd;
+    }
+
+    .editing-tab tr:last-child th,
+    .editing-tab tr:last-child td {
+        border-bottom:none;
+    }
+
+    .editing-tab th {
+        width:16%;
+        text-align:right;
+        font-weight:normal;
+    }
+
+.table-2-column td {
+    width:34%;
+}

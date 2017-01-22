@@ -23,6 +23,11 @@ namespace Service
             this._dbContext = dbContext;
         }
 
+        public User GetUser(Guid id)
+        {
+            return _userRepository.GetById(id);
+        }
+
         public void CreateUser(User user)
         {
             if (user == null)
