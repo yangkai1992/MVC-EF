@@ -3,8 +3,9 @@ using Service;
 using System.Linq;
 using Autofac.Integration.Mvc;
 using Repository;
+using Common;
 
-namespace Common
+namespace Web
 {
     /// <summary>
     /// 依赖注入

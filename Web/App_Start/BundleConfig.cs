@@ -15,6 +15,9 @@ namespace Web
                         "~/Scripts/Common.js",
                         "~/Scripts/UIHelp.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                "~/Scripts/JSvalidate/jquery.validate*"));
+
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/Scripts/Plugin/angular.min.js"));
 
@@ -37,6 +40,7 @@ namespace Web
                       , "~/Scripts/Plugin/dist/css/AdminLTE.css"
                       , "~/Scripts/Plugin/dist/css/skins/_all-skins.css"
                       , "~/Scripts/Plugin/plugins/iCheck/square/blue.css"
+                      , "~/Scripts/Plugin/plugins/iCheck/flat/blue.css"
                       , "~/Scripts/Plugin/plugins/datatables/dataTables.bootstrap.css"
                       , "~/Scripts/Plugin/plugins/datepicker/datepicker3.css"));
         }

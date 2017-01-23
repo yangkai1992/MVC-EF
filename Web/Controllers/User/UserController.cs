@@ -3,6 +3,7 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -67,6 +68,8 @@ namespace Web.Controllers.User
             int totalCount;
             List<Model.User> users = _userService.PageSearch(pageIndex, 10, out totalCount,wheres,"",sqlParameters.ToArray());
 
+            users.ForEach(m => m.HeadImage = GetHeadImageUrl(m.HeadImage));
+
             ViewBag.PageInfo = new PagingModel { PageIndex = pageIndex, PageSize = 10, TotalCount = totalCount, Url = Url.Content("~/User/Index"),QueryParams=queryParams };
             return View(users);
         }
@@ -74,6 +77,7 @@ namespace Web.Controllers.User
         public ActionResult Detail(Guid id)
         {
             Model.User user = _userService.GetUser(id);
+            user.HeadImage = GetHeadImageUrl(user.HeadImage);
             return View(user);
         }
 
@@ -81,13 +85,36 @@ namespace Web.Controllers.User
         public ActionResult Edit(Guid id)
         {
             Model.User user = _userService.GetUser(id);
+            user.HeadImage = GetHeadImageUrl(user.HeadImage);
             return View(user);
         }
 
         [HttpPost]
-        public ActionResult Edit(Model.User user)
+        public ActionResult Edit(Model.User user, HttpPostedFileBase newHeadImage)
         {
-            return View(user);
+            if (newHeadImage != null)
+            {
+                user.HeadImage = newHeadImage.FileName;
+                newHeadImage.SaveAs(Server.MapPath(Path.Combine( FilePathConfig.HEADIMAGE_PATH,newHeadImage.FileName)));
+            }
+
+            Model.User oldUser = _userService.GetUser(user.Id);
+            EFHelper.UpdateModel<Model.User>(user, oldUser);
+            _userService.UpdateUser(oldUser);
+
+            if (user.Id == CurrentUser.Id)
+            {
+                CurrentUser = oldUser;
+            }
+            return Redirect(Url.Content("~/User/Detail/" + user.Id));
+        }
+
+        private string GetHeadImageUrl(string headImage)
+        {
+            if (!string.IsNullOrEmpty(headImage))
+                return string.Format("{0}/{1}", FilePathConfig.HEADIMAGE_URL, headImage);
+            else
+                return string.Format("{0}/{1}", FilePathConfig.HEADIMAGE_URL, "default.jpg");
         }
     }
 }

@@ -76,6 +76,7 @@
     <Compile Include="Cache\RedisCache.cs" />
     <Compile Include="Cache\RedisConnectionWrapper.cs" />
     <Compile Include="ConfigHelper.cs" />
+    <Compile Include="EFHelper.cs" />
     <Compile Include="EncryptHelper.cs" />
     <Compile Include="Ioc\AppDomainTypeFinder.cs" />
     <Compile Include="Ioc\ContainerManager.cs" />

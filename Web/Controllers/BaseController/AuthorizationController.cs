@@ -23,6 +23,12 @@ namespace Web.Controllers
 
                 return _user;
             }
+            set
+            {
+                _user = value;
+                string token = WebHelper.GetCookie("token");
+                Session[token] = _user;
+            }
         }
 
 

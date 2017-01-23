@@ -31,6 +31,7 @@ namespace Model
         public string UserName { get; set; }
 
         [DisplayName("邮箱")]
+        [RegularExpression("^\\s*([A-Za-z0-9_-]+(\\.\\w+)*@(\\w+\\.)+\\w{2,5})\\s*$",ErrorMessage="请输入正确的邮箱")]
         public string Email { get; set; }
 
         [DisplayName("头像")]

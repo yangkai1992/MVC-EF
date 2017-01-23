@@ -116,11 +116,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\DefaultImage\user4-128x128.jpg" />
+    <Content Include="Upload\HeadImage\default.jpg" />
     <Content Include="Content\Icon\lc-icons.png" />
     <Content Include="Content\common.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <None Include="Scripts\JSvalidate\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\JSvalidate\jquery.validate.js" />
+    <Content Include="Scripts\JSvalidate\jquery.validate.min.js" />
+    <Content Include="Scripts\JSvalidate\jquery.validate.plus.js" />
+    <Content Include="Scripts\JSvalidate\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\JSvalidate\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Plugin\angular.min.js" />
     <Content Include="Scripts\Plugin\bootstrap\css\bootstrap.css" />
     <Content Include="Scripts\Plugin\bootstrap\css\bootstrap.min.css" />
@@ -976,8 +982,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Common\Common.cs" />
     <Compile Include="Common\DependencyRegistrar.cs" />
+    <Compile Include="Common\FilePathConfig.cs" />
     <Compile Include="Controllers\BaseController\AuthorizationController.cs" />
     <Compile Include="Controllers\BaseController\BaseController.cs" />
+    <Compile Include="Controllers\Email\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\User\AccountController.cs" />
     <Compile Include="Controllers\User\UserController.cs" />
@@ -1046,6 +1054,7 @@
     <Content Include="Views\Shared\_Paging.cshtml" />
     <Content Include="Views\User\Detail.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\Email\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

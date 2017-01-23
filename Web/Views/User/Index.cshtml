@@ -75,7 +75,7 @@
                                             <td>@item.Account</td>
                                             <td>@item.UserName</td>
                                             <td>@item.Email</td>
-                                            <td>@item.HeadImage</td>
+                                            <td><img style="width:50px;margin:0 auto" id="headImage" class="img-responsive img-circle" src="@item.HeadImage" /></td>
                                             <td>@item.CreateTime.ToString("yyyy-MM-dd HH:MM")</td>
                                             <td style="text-align:center">
                                                 <a href="@Url.Content("~/User/Detail/"+item.Id)">查看</a>
