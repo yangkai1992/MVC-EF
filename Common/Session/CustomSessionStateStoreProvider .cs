@@ -54,7 +54,7 @@ namespace Common.Session
             {
                 return null;
             }
-            _cache.Set(id, state, state._timeout);
+            //_cache.Set(id, state, state._timeout);
             return CreateLegitStoreData(context, state._sessionItems, state._staticObjects, state._timeout);
         }
 
@@ -70,16 +70,20 @@ namespace Common.Session
 
         public override void SetAndReleaseItemExclusive(HttpContext context, string id, SessionStateStoreData item, object lockId, bool newItem)
         {
-            ISessionStateItemCollection sessionItems = null;
-            HttpStaticObjectsCollection staticObjects = null;
+            if (newItem)
+            {
+                ISessionStateItemCollection sessionItems = null;
+                HttpStaticObjectsCollection staticObjects = null;
 
-            if (item.Items.Count > 0)
-                sessionItems = item.Items;
-            if (!item.StaticObjects.NeverAccessed)
-                staticObjects = item.StaticObjects;
+                if (item.Items.Count > 0)
+                    sessionItems = item.Items;
+                if (!item.StaticObjects.NeverAccessed)
+                    staticObjects = item.StaticObjects;
 
-            SessionState state2 = new SessionState(sessionItems, staticObjects, item.Timeout);
-            _cache.Set(id, state2.ToJson(), item.Timeout);
+                SessionState state2 = new SessionState(sessionItems, staticObjects, item.Timeout);
+                _cache.Set(id, state2.ToJson(), item.Timeout);
+            }
+
         }
 
         public override void CreateUninitializedItem(HttpContext context, string id, int timeout)

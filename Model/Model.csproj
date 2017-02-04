@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Enum\EmailReadStatusEnum.cs" />
+    <Compile Include="Model\Email\Email.cs" />
+    <Compile Include="Model\Enum\EmailStatusEnum.cs" />
     <Compile Include="Model\User\LoginHistory.cs" />
     <Compile Include="Model\User\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

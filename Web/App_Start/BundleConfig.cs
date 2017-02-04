@@ -32,6 +32,10 @@ namespace Web
                         , "~/Scripts/Plugin/plugins/datepicker/bootstrap-datepicker.js"
                         , "~/Scripts/Plugin/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/wysihtml5").Include("~/Scripts/Plugin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js"));
+
+            bundles.Add(new StyleBundle("~/Content/wysihtml5").Include("~/Scripts/Plugin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.css"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/common.css"
                       , "~/Scripts/Plugin/bootstrap/css/bootstrap.css"

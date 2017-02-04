@@ -19,12 +19,13 @@ namespace Web
 
             //注册服务
             builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
+            builder.RegisterType<EmailService>().As<IEmailService>().InstancePerLifetimeScope();
 
             builder.Register<IDbContext>(c => new DataContext(ConfigHelper.GetConnectionString("DefaultConnection"))).InstancePerLifetimeScope();
 
             builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
 
-            builder.RegisterType<IISCache>().As<ICache>().InstancePerLifetimeScope();
+            builder.RegisterType<RedisCache>().As<ICache>().InstancePerLifetimeScope();
         }
     }
 }

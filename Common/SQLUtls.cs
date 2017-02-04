@@ -22,10 +22,9 @@ namespace Common
             string sql = @"select top {0} * from 
                         (select row_number()over(order by id)rownumber,* from {1}
                             {2}
-                            {3}
                         )a
                         where rownumber>{4}
-
+                        {3}
                         select count(*) from {1} {2}";
             string where = " where 1 = 1";
             if (wheres != null && wheres.Count() > 0)

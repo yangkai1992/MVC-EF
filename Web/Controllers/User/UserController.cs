@@ -8,7 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Web.Controllers.User
+namespace Web.Controllers
 {
     public class UserController : AuthorizationController
     {
