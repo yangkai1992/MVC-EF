@@ -25,7 +25,7 @@ namespace Web
 
             builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
 
-            builder.RegisterType<RedisCache>().As<ICache>().InstancePerLifetimeScope();
+            builder.RegisterType<IISCache>().As<ICache>().InstancePerLifetimeScope();
         }
     }
 }
